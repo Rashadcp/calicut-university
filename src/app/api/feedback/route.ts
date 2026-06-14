@@ -54,34 +54,31 @@ export async function POST(request: Request) {
     submissionTime,
   };
 
-  // 4. Forward to the Google Apps Script Web App.
-  try {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 15000);
+  // 4. Forward to the Google Apps Script Web App in the background.
+  // We do not await this fetch so that the user's request completes instantly.
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 15000);
 
-    const res = await fetch(scriptUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-      signal: controller.signal,
-      redirect: "follow",
+  fetch(scriptUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+    signal: controller.signal,
+    redirect: "follow",
+  })
+    .then((res) => {
+      clearTimeout(timeout);
+      if (!res.ok) {
+        console.error("Apps Script background save failed with status:", res.status);
+      } else {
+        console.log("Feedback successfully saved to Google Sheets in background.");
+      }
+    })
+    .catch((err) => {
+      clearTimeout(timeout);
+      console.error("Failed to reach Apps Script in background:", err);
     });
-    clearTimeout(timeout);
 
-    if (!res.ok) {
-      console.error("Apps Script responded with status", res.status);
-      return NextResponse.json(
-        { ok: false, error: "Could not save your feedback. Please try again." },
-        { status: 502 }
-      );
-    }
-
-    return NextResponse.json({ ok: true });
-  } catch (err) {
-    console.error("Failed to reach Apps Script:", err);
-    return NextResponse.json(
-      { ok: false, error: "Network error while saving your feedback." },
-      { status: 502 }
-    );
-  }
+  // Return success immediately to make the UI transition instant.
+  return NextResponse.json({ ok: true });
 }

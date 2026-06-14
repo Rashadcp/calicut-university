@@ -159,7 +159,7 @@ export default function FeedbackForm() {
             initial="enter"
             animate="center"
             exit="exit"
-            transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
             className="w-full flex-1 flex flex-col relative"
           >
             {/* ---------------- STEP 1 ---------------- */}
@@ -169,7 +169,7 @@ export default function FeedbackForm() {
                   <label className="font-label-sm text-label-sm text-primary ml-1">Full Name</label>
                   <input
                     type="text"
-                    placeholder="e.g. Julian Aetheris"
+                    placeholder="Name"
                     className={`input-inset border border-black/10 hover:border-black/20 rounded-xl p-4 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-1 focus:ring-primary focus:border-primary transition-all outline-none font-body-lg text-body-lg ${errors.fullName ? "ring-1 ring-error/50 border-error/50" : ""}`}
                     {...register("fullName")}
                   />

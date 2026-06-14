@@ -11,6 +11,8 @@ export default function Home() {
               alt="University of Calicut" 
               className="h-12 w-auto object-contain" 
             />
+          </div>
+          <div className="flex items-center gap-4 active:scale-95 transition-transform">
             <img 
               src="/union-logo.png" 
               alt="Student Union" 

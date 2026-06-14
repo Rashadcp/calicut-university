@@ -13,14 +13,14 @@ export default function SuccessScreen({ onReset }: SuccessScreenProps) {
       initial={{ opacity: 0, scale: 0.96 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.96 }}
-      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.25, ease: "easeOut" }}
       className="flex flex-col items-center text-center p-6 md:p-8"
     >
       {/* Animated checkmark */}
       <motion.div
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
-        transition={{ type: "spring", stiffness: 200, damping: 14, delay: 0.1 }}
+        transition={{ type: "spring", stiffness: 220, damping: 15, delay: 0.05 }}
         className="relative mb-7"
       >
         <motion.span
@@ -45,7 +45,7 @@ export default function SuccessScreen({ onReset }: SuccessScreenProps) {
               strokeLinejoin="round"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
-              transition={{ duration: 0.5, delay: 0.35, ease: "easeOut" }}
+              transition={{ duration: 0.3, delay: 0.15, ease: "easeOut" }}
             />
           </svg>
         </div>
@@ -54,7 +54,7 @@ export default function SuccessScreen({ onReset }: SuccessScreenProps) {
       <motion.h1
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.45 }}
+        transition={{ delay: 0.2 }}
         className="font-headline-md text-headline-md text-on-surface"
       >
         Thank You!
@@ -63,7 +63,7 @@ export default function SuccessScreen({ onReset }: SuccessScreenProps) {
       <motion.p
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.55 }}
+        transition={{ delay: 0.25 }}
         className="mt-3 max-w-md font-body-md text-body-md text-on-surface-variant opacity-80 leading-relaxed"
       >
         Thank you for your feedback / suggestion! Your thoughts and input are highly valued and help us improve our campus.
@@ -74,7 +74,7 @@ export default function SuccessScreen({ onReset }: SuccessScreenProps) {
         onClick={onReset}
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.65 }}
+        transition={{ delay: 0.3 }}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         className="mt-8 rounded-xl bg-primary text-on-primary px-7 py-3.5 font-label-sm text-label-sm uppercase tracking-widest transition-all hover:bg-primary/90 shadow-md"
