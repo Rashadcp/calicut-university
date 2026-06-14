@@ -66,7 +66,7 @@ export default function SuccessScreen({ onReset }: SuccessScreenProps) {
         transition={{ delay: 0.25 }}
         className="mt-3 max-w-md font-body-md text-body-md text-on-surface-variant opacity-80 leading-relaxed"
       >
-        Thank you for your feedback / suggestion! Your thoughts and input are highly valued and help us improve our campus.
+        Thank you for your feedback / suggestion! Your thoughts and input are highly valued 
       </motion.p>
 
       <motion.button
