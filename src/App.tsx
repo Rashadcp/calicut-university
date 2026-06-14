@@ -12,12 +12,16 @@ export default function App() {
               className="h-12 w-auto object-contain" 
             />
           </div>
-          <div className="flex items-center gap-4 active:scale-95 transition-transform">
+          <div className="flex flex-col items-end gap-1 active:scale-95 transition-transform">
             <img 
               src="/union-logo.png" 
               alt="Student Union" 
               className="h-10 w-auto object-contain" 
             />
+            <div className="flex flex-col items-end text-primary leading-tight font-sans">
+              <span className="text-[11px] font-bold tracking-wide">കാലിക്കറ്റ് സർവകലാശാല</span>
+              <span className="text-[10px] font-medium opacity-90">വിദ്യാർത്ഥി യൂണിയൻ 2025</span>
+            </div>
           </div>
         </div>
       </header>
