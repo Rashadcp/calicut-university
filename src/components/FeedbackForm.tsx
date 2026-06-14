@@ -1,4 +1,4 @@
-"use client";
+
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -83,14 +83,35 @@ export default function FeedbackForm() {
   const onSubmit = handleSubmit(async (data) => {
     setServerError(null);
     try {
-      const res = await fetch("/api/feedback", {
+      const scriptUrl = import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL;
+      if (!scriptUrl) {
+        throw new Error("Server is not configured to accept feedback yet.");
+      }
+
+      const now = new Date();
+      const submissionDate = now.toLocaleDateString("en-GB", {
+        timeZone: "Asia/Kolkata",
+      });
+      const submissionTime = now.toLocaleTimeString("en-GB", {
+        timeZone: "Asia/Kolkata",
+        hour12: false,
+      });
+
+      const payload = {
+        ...data,
+        submissionDate,
+        submissionTime,
+      };
+
+      const res = await fetch(scriptUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
+        redirect: "follow",
       });
-      const json = await res.json().catch(() => ({}));
-      if (!res.ok || !json?.ok) {
-        throw new Error(json?.error ?? "Something went wrong.");
+      
+      if (!res.ok && res.type !== "opaque") {
+        throw new Error("Something went wrong.");
       }
       setDirection(1);
       setPhase("success");

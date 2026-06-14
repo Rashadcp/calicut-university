@@ -1,12 +1,11 @@
 import FeedbackForm from "@/components/FeedbackForm";
 
-export default function Home() {
+export default function App() {
   return (
     <>
       <header className="bg-surface/80 backdrop-blur-xl text-primary font-headline-md text-headline-md w-full top-0 sticky border-b border-black/5 shadow-sm z-50">
         <div className="flex items-center justify-between px-gutter py-4 w-full max-w-7xl mx-auto">
           <div className="flex items-center gap-4 active:scale-95 transition-transform">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img 
               src="/calicut-logo.png" 
               alt="University of Calicut" 
@@ -14,7 +13,6 @@ export default function Home() {
             />
           </div>
           <div className="flex items-center gap-4 active:scale-95 transition-transform">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img 
               src="/union-logo.png" 
               alt="Student Union" 
@@ -36,4 +34,3 @@ export default function Home() {
     </>
   );
 }
-

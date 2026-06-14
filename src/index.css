@@ -4,6 +4,8 @@
 
 :root {
   color-scheme: light;
+  --font-eb-garamond: 'EB Garamond', serif;
+  --font-hanken: 'Hanken Grotesk', sans-serif;
 }
 
 body {
@@ -51,4 +53,3 @@ textarea::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.1);
   border-radius: 999px;
 }
-
